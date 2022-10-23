@@ -29,7 +29,7 @@ void	ft_putnbr(int nb)
 		}
 		nb *= -1;
 	}
-	if (nb > 10)
+	if (nb > 9)
 		ft_putnbr(nb / 10);
 	ft_putchar(nb % 10 + 48);
 }
