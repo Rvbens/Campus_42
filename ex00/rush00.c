@@ -16,28 +16,16 @@ void	ft_putchar(char character);
 
 void	ft_col_1(int c, int x)
 {
-	if (c == 0)
-		ft_putchar('/');
-	else if (c == x - 1)
-		ft_putchar('\\');
+	if (c == 0 || c == x - 1)
+		ft_putchar('o');
 	else
-		ft_putchar('*');
-}
-
-void	ft_fil_ult(int c, int x)
-{
-	if (c == 0)
-		ft_putchar('\\');
-	else if (c == x - 1)
-		ft_putchar('/');
-	else
-		ft_putchar('*');
+		ft_putchar('-');
 }
 
 void	ft_resto(int c, int x)
 {
 	if (c == 0 || c == x - 1)
-		ft_putchar('*');
+		ft_putchar('|');
 	else
 		ft_putchar(' ');
 }
@@ -53,10 +41,8 @@ void	rush(int x, int y)
 	{
 		while (c < x)
 		{
-			if (f == 0)
+			if (f == 0 || f == y - 1)
 				ft_col_1(c, x);
-			else if (f == y - 1)
-				ft_fil_ult(c, x);
 			else
 				ft_resto(c, x);
 			c++;

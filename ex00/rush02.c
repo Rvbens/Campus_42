@@ -16,28 +16,24 @@ void	ft_putchar(char character);
 
 void	ft_col_1(int c, int x)
 {
-	if (c == 0)
-		ft_putchar('/');
-	else if (c == x - 1)
-		ft_putchar('\\');
+	if (c == 0 || c == x - 1)
+		ft_putchar('A');
 	else
-		ft_putchar('*');
+		ft_putchar('B');
 }
 
 void	ft_fil_ult(int c, int x)
 {
-	if (c == 0)
-		ft_putchar('\\');
-	else if (c == x - 1)
-		ft_putchar('/');
+	if (c == 0 || c == x - 1)
+		ft_putchar('C');
 	else
-		ft_putchar('*');
+		ft_putchar('B');
 }
 
 void	ft_resto(int c, int x)
 {
 	if (c == 0 || c == x - 1)
-		ft_putchar('*');
+		ft_putchar('B');
 	else
 		ft_putchar(' ');
 }
