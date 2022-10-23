@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r01.c                                              :+:      :+:    :+:   */
+/*   rush00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,17 +14,17 @@
 
 void	ft_putchar(char character);
 
-void	ft_col_1(int c, int x)
+void	ft_check_col(int column, int x)
 {
-	if (c == 0 || c == x - 1)
+	if (column == 0 || column == x - 1)
 		ft_putchar('o');
 	else
 		ft_putchar('-');
 }
 
-void	ft_resto(int c, int x)
+void	ft_checkmid(int column, int x)
 {
-	if (c == 0 || c == x - 1)
+	if (column == 0 || column == x - 1)
 		ft_putchar('|');
 	else
 		ft_putchar(' ');
@@ -32,23 +32,23 @@ void	ft_resto(int c, int x)
 
 void	rush(int x, int y)
 {
-	int	c;
-	int	f;
+	int	column;
+	int	row;
 
-	c = 0;
-	f = 0;
-	while (f < y)
+	column = 0;
+	row = 0;
+	while (row < y)
 	{
-		while (c < x)
+		while (column < x)
 		{
-			if (f == 0 || f == y - 1)
-				ft_col_1(c, x);
+			if (row == 0 || row == y - 1)
+				ft_check_col(column, x);
 			else
-				ft_resto(c, x);
-			c++;
+				ft_checkmid(column, x);
+			column++;
 		}
 		ft_putchar(10);
-		f++;
-		c = 0;
+		row++;
+		column = 0;
 	}
 }

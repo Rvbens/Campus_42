@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r01.c                                              :+:      :+:    :+:   */
+/*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:13:18 by dgarizad          #+#    #+#             */
-/*   Updated: 2022/10/23 12:26:34 by dgarizad         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:33:27 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void	ft_putchar(char character);
 
-void	ft_col_1(int c, int x)
+void	ft_check_col(int column, int x)
 {
-	if (c == 0)
+	if (column == 0)
 		ft_putchar('/');
-	else if (c == x - 1)
+	else if (column == x - 1)
 		ft_putchar('\\');
 	else
 		ft_putchar('*');
 }
 
-void	ft_fil_ult(int c, int x)
+void	ft_last_row(int column, int x)
 {
-	if (c == 0)
+	if (column == 0)
 		ft_putchar('\\');
-	else if (c == x - 1)
+	else if (column == x - 1)
 		ft_putchar('/');
 	else
 		ft_putchar('*');
 }
 
-void	ft_resto(int c, int x)
+void	ft_checkmid(int column, int x)
 {
-	if (c == 0 || c == x - 1)
+	if (column == 0 || column == x - 1)
 		ft_putchar('*');
 	else
 		ft_putchar(' ');
@@ -44,25 +44,25 @@ void	ft_resto(int c, int x)
 
 void	rush(int x, int y)
 {
-	int	c;
-	int	f;
+	int	column;
+	int	row;
 
-	c = 0;
-	f = 0;
-	while (f < y)
+	column = 0;
+	row = 0;
+	while (row < y)
 	{
-		while (c < x)
+		while (column < x)
 		{
-			if (f == 0)
-				ft_col_1(c, x);
-			else if (f == y - 1)
-				ft_fil_ult(c, x);
+			if (row == 0)
+				ft_check_col(column, x);
+			else if (row == y - 1)
+				ft_last_row(column, x);
 			else
-				ft_resto(c, x);
-			c++;
+				ft_checkmid(column, x);
+			column++;
 		}
 		ft_putchar(10);
-		f++;
-		c = 0;
+		row++;
+		column = 0;
 	}
 }
