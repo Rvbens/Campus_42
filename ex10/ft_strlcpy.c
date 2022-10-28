@@ -23,6 +23,6 @@ unsigned int	*ft_strlcpy(char *dest, char *src, unsigned int size)
 			dest[c] = src[c];
 		c++;
 	}
-	src[c] = 0;
+	dest[size - 1] = 0;
 	return (c);
 }
