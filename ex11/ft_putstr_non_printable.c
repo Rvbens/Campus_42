@@ -27,7 +27,7 @@ void	ft_dec_2_hex(int nb)
 		ft_putchar(nb + 48);
 }
 
-void	ft_puthex(int nb)
+void	ft_puthex(unsigned char nb)
 {
 	ft_putchar(92);
 	ft_dec_2_hex(nb / 16);

@@ -10,19 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
+	unsigned int	src_len;
 	unsigned int	c;
 
+	src_len = 0;
+	while (src[src_len] != 0)
+		src_len++;
 	c = 0;
-	while (src[c] != 0)
+	if (size)
 	{
-		if (c < size - 1)
+		while (c < src_len && c < size)
+		{
 			dest[c] = src[c];
-		c++;
+			c++;
+		}
+		if (size > src_len)
+			dest[src_len] = 0;
+		else
+			dest[size - 1] = 0;
 	}
-	dest[size - 1] = 0;
-	return (c);
+	return (src_len);
 }
