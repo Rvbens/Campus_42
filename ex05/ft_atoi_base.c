@@ -77,7 +77,7 @@ int	ft_arr_to_int(int *arr, int i, int base_n)
 int	ft_atoi_base(char *str, char *base)
 {
 	int	sig;
-	int	arr[10];
+	int	arr[32];
 	int	i;
 	int	out;
 	int	base_n;
