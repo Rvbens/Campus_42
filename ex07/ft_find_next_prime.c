@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    ft_find_next_prime.c                              :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 08:57:57 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/03 17:39:21 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:06:39 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	ft_find_next_prime(int nb)
 
 int main(void)
 {
-	printf("%d", ft_is_prime(0));
-	printf("%d", ft_is_prime(1));
-	printf("%d", ft_is_prime(3));
-	printf("%d", ft_is_prime(4));
-	printf("%d", ft_is_prime(5));
-	printf("%d", ft_is_prime(-1));
+	printf("%d\n", ft_find_next_prime(0));
+	printf("%d\n", ft_find_next_prime(1));
+	printf("%d\n", ft_find_next_prime(3));
+	printf("%d\n", ft_find_next_prime(4));
+	printf("%d\n", ft_find_next_prime(5));
+	printf("%d\n", ft_find_next_prime(-1));
 }*/

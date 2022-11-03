@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchaves- <rchaves-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 07:54:43 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/03 08:00:38 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:02:02 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ int	ft_fibonacci(int index)
 
 int	main(void)
 {
-	printf("%d", ft_fibonacci(6));
+	int c = 0;
+	while(c++ < 8)
+		printf("%d\n", ft_fibonacci(c));
+	printf("%d\n", ft_fibonacci(-1));
 }*/
