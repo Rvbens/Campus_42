@@ -6,24 +6,53 @@
 /*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 08:57:57 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/03 19:06:39 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/05 02:37:17 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime_rec(int nb, int div)
+int	ft_binary_search(long nb, int min, int max)
 {
-	if (div == 1)
+	int	half;
+
+	if (min * min == nb)
+		return (min);
+	else if (max * max == nb)
+		return (max);
+	if (max - min > 1)
+	{
+		half = (max + min) / 2;
+		if (half > 46339)
+			half = 46339;
+		if (half * half > nb)
+			return (ft_binary_search(nb, min, half));
+		else
+			return (ft_binary_search(nb, half, max));
+	}
+	else
+		return (min);
+}
+
+int	ft_is_prime_rec(int nb, int div, int max)
+{
+	if (div > max)
 		return (1);
 	if (nb % div == 0)
 		return (0);
 	else
-		return (ft_is_prime_rec(nb, div - 1));
+		return (ft_is_prime_rec(nb, div + 2, max));
 }
 
 int	ft_is_prime(int nb)
 {
+	int	root;
+
+	if (nb % 2 == 0)
+		return (0);
 	if (nb > 1)
-		return (ft_is_prime_rec(nb, nb / 2));
+	{
+		root = ft_binary_search(nb, 0, nb);
+		return (ft_is_prime_rec(nb, 3, root));
+	}
 	else
 		return (0);
 }
