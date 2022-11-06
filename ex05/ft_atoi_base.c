@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchaves- <rchaves-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:46:04 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/10/28 11:46:07 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:37:21 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	ft_save_digits(char *str, int *arr, char *base)
 	int		i;
 	char	c;
 
+	while (*str == base[0])
+		str++;
 	i = 0;
 	c = ft_char_to_base(str[0], base);
 	while (c >= 0)

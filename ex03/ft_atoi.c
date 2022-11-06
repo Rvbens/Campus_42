@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchaves- <rchaves-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:46:04 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/10/28 11:46:07 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:34:04 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	ft_save_digits(char *str, int *arr)
 	int	i;
 
 	i = 0;
-	while (str[i] > '0' && str[i] < '9')
+	while (*str == '0')
+		str++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		arr[i] = str[i] - '0';
 		i++;
