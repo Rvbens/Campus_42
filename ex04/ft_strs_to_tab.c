@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:44:25 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/09 22:22:00 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:33:36 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	if (!arr)
 		return (NULL);
 	c = 0;
-	while (c < ac)
+	while (c < ac && av)
 	{
 		arr[c] = ft_set_stock(av[c]);
 		c++;

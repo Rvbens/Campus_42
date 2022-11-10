@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:21:02 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/09 22:44:43 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:37:17 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ void	ft_putnbr(long nb)
 	write(1, &"0123456789"[nb % 10], 1);
 }
 
-
 void	ft_show_tab(struct s_stock_str *par)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (par[i].size != 0)
+	while (par && par[i].size != 0)
 	{
 		j = 0;
 		while (par[i].str[j])
@@ -49,18 +48,18 @@ void	ft_show_tab(struct s_stock_str *par)
 		i++;
 	}
 }
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	t_stock_str	*stk;
+// 	char		*list[2];
+// 	char		*str1 = "Hola1";
+// 	char		str2[] = "Hola2";
 
-
-/*#include <stdio.h>
-int	main(void)
-{
-	t_stock_str	*stk;
-	char		*list[2];
-	char		*str1 = "Hola1";
-	char		str2[] = "Hola2";
-
-	list[0] = str1;
-	list[1] = &str2[0];
-	stk = ft_strs_to_tab(2, list);
-	ft_show_tab(stk);
-}*/
+// 	list[0] = str1;
+// 	list[1] = &str2[0];
+// 	//printf("%p\n", list);
+// 	stk = ft_strs_to_tab(3, list);
+// 	//printf("%p", stk);
+// 	ft_show_tab(stk);
+// }
