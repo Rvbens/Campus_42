@@ -3,17 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:46:04 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/03 17:37:21 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:09:49 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_check_doubles(char *base)
+int	ft_check_base(char *base)
 {
 	int	i;
+	int	base_n;
 
+	base_n = 0;
+	while (base[base_n])
+		base_n++;
+	if (base_n < 2)
+		return (0);
 	while (*base)
 	{
 		if (*base == '-' || *base == '+')
@@ -26,7 +32,7 @@ int	ft_check_doubles(char *base)
 		}
 		base++;
 	}
-	return (1);
+	return (base_n);
 }
 
 int	ft_char_to_base(char c, char *base)
@@ -43,54 +49,16 @@ int	ft_char_to_base(char c, char *base)
 	return (-1);
 }
 
-int	ft_save_digits(char *str, int *arr, char *base)
-{
-	int		i;
-	char	c;
-
-	while (*str == base[0])
-		str++;
-	i = 0;
-	c = ft_char_to_base(str[0], base);
-	while (c >= 0)
-	{
-		arr[i] = c;
-		i++;
-		c = ft_char_to_base(str[i], base);
-	}
-	return (i);
-}
-
-int	ft_arr_to_int(int *arr, int i, int base_n)
-{
-	int	out;
-	int	exp;
-
-	out = 0;
-	exp = 1;
-	while (i--)
-	{
-		out += arr[i] * exp;
-		exp *= base_n;
-	}
-	return (out);
-}
-
 int	ft_atoi_base(char *str, char *base)
 {
 	int	sig;
-	int	arr[32];
-	int	i;
 	int	out;
 	int	base_n;
 
-	base_n = 0;
-	while (base[base_n])
-		base_n++;
-	if (base_n < 2 || !ft_check_doubles(base))
+	base_n = ft_check_base(base);
+	if (!base_n)
 		return (0);
-	while (*str == '\t' | *str == '\n' | *str == '\v'
-		| *str == '\r' | *str == ' ' | *str == '\f')
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
 	sig = 1;
 	while (*str == '-' || *str == '+')
@@ -99,7 +67,8 @@ int	ft_atoi_base(char *str, char *base)
 			sig *= -1;
 		str++;
 	}
-	i = ft_save_digits(str, arr, base);
-	out = ft_arr_to_int(arr, i, base_n);
+	out = 0;
+	while (ft_char_to_base(str[0], base) != -1)
+		out = out * base_n + ft_char_to_base(str++[0], base);
 	return (sig * out);
 }

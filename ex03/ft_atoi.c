@@ -3,61 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchaves- <rchaves-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:46:04 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/11/03 17:34:04 by rchaves-         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:49:17 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_isspace(char c)
-{
-	int		isspace;
-
-	isspace = c == '\t' | c == '\n' | c == '\v';
-	isspace |= c == '\r' | c == ' ' | c == '\f';
-	return (isspace);
-}
-
-int	ft_save_digits(char *str, int *arr)
-{
-	int	i;
-
-	i = 0;
-	while (*str == '0')
-		str++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		arr[i] = str[i] - '0';
-		i++;
-	}
-	return (i);
-}
 
 int	ft_atoi(char *str)
 {
 	int	sig;
-	int	arr[10];
-	int	i;
 	int	out;
-	int	exp;
 
-	sig = 1;
-	while (ft_isspace(*str))
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
+	sig = 1;
 	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sig *= -1;
 		str++;
 	}
-	i = ft_save_digits(str, arr);
 	out = 0;
-	exp = 1;
-	while (i--)
+	while (*str >= '0' && *str <= '9')
 	{
-		out += arr[i] * exp;
-		exp *= 10;
+		out = out * 10 + (*str - '0');
+		str++;
 	}
 	return (sig * out);
 }
