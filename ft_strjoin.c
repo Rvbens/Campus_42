@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 13:21:48 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/12/17 19:13:05 by rchaves-         ###   ########.fr       */
+/*   Created: 2022/12/17 11:32:17 by rchaves-          #+#    #+#             */
+/*   Updated: 2022/12/17 11:46:00 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, t_size len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_size	ndl_len;
+	t_size	s1_len;
+	t_size	s2_len;
+	char	*ptr;
 
-	ndl_len = ft_strlen(needle);
-	if (!ndl_len)
-		return ((char *) haystack);
-	if (haystack[0] && len >= ndl_len)
-	{
-		while (*haystack && (len-- - ndl_len + 1))
-		{
-			if (ft_strncmp(haystack, needle, ndl_len) == 0)
-				return ((char *) haystack);
-			haystack++;
-		}
-	}
-	return (0);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ptr = malloc(s1_len + s2_len + 1);
+	if (!ptr)
+		return (0);
+	ft_strlcpy(ptr, s1, s1_len + 1);
+	ft_strlcpy(&ptr[s1_len], s2, s2_len + 1);
+	return (ptr);
 }

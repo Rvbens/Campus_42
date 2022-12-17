@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 13:21:48 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/12/17 19:13:05 by rchaves-         ###   ########.fr       */
+/*   Created: 2022/12/16 12:13:12 by rchaves-          #+#    #+#             */
+/*   Updated: 2022/12/16 13:04:05 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, t_size len)
+char	*ft_substr(char const *s, unsigned int start, t_size len)
 {
-	t_size	ndl_len;
+	char	*ptr;
+	t_size	sz;
 
-	ndl_len = ft_strlen(needle);
-	if (!ndl_len)
-		return ((char *) haystack);
-	if (haystack[0] && len >= ndl_len)
-	{
-		while (*haystack && (len-- - ndl_len + 1))
-		{
-			if (ft_strncmp(haystack, needle, ndl_len) == 0)
-				return ((char *) haystack);
-			haystack++;
-		}
-	}
-	return (0);
+	sz = ft_strlen(s);
+	if (sz < start)
+		sz = 0;
+	else
+		sz -= start;
+	if (len < sz)
+		sz = len;
+	ptr = malloc(sz + 1);
+	if (!ptr)
+		return (0);
+	if (sz)
+		ft_strlcpy(ptr, &s[start], sz + 1);
+	else
+		*ptr = 0;
+	return (ptr);
 }
