@@ -32,11 +32,3 @@ bonus: $(OBJ_SRC)
 	ar rc $(NAME) $(OBJ_SRC)
 
 .PHONY: all clean fclean re
-
-n:
-	norminette -RCheckForbiddenSourceHeader
-
-test:
-	@cc *.c
-	@./a.out
-	@rm a.out
