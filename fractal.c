@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:56:16 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/25 19:54:15 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:35:20 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ void	ft_pxl_to_coords(int w, int h, t_graph *grf, float c[2])
 }
 
 // return number of iterations to escape to infinity or MAX_ITERS
-int	ft_mandelbrot(int w, int h, t_graph *grf)
+int	ft_mandelbrot(int w, int h, t_graph *grf, float n[2])
 {
 	float	c[2];
 	float	z[2];
 	float	z2[2];
 	int		i;
 
+	n[1] = 0;
 	ft_pxl_to_coords(w + 0.5, h + 0.5, grf, c);
 	z2[0] = 0;
 	z2[1] = 0;
@@ -45,15 +46,15 @@ int	ft_mandelbrot(int w, int h, t_graph *grf)
 }
 
 // return number of iterations to escape to infinity or MAX_ITERS
-int	ft_julia(int w, int h, t_graph *grf, int c[2])
+int	ft_julia(int w, int h, t_graph *grf, float c[2])
 {
 	float	z[2];
 	float	z2[2];
 	int		i;
 
 	ft_pxl_to_coords(w + 0.5, h + 0.5, grf, z);
-	z2[0] = c[0] * c[0];
-	z2[1] = c[1] * c[1];
+	z2[0] = z[0] * z[0];
+	z2[1] = z[1] * z[1];
 	i = 1;
 	while (z2[0] + z2[1] < 4. && i < MAX_ITER)
 	{
@@ -66,29 +67,39 @@ int	ft_julia(int w, int h, t_graph *grf, int c[2])
 	return (i);
 }
 
+int	ft_iter_to_color(int i)
+{
+	if (i == MAX_ITER)
+		return (0x000000FF);
+	else if (i > MAX_ITER / 2)
+		return (0x0000FFFF);
+	else if (i > MAX_ITER / 4)
+		return (0x007dFFFF);
+	else if (i > MAX_ITER / 10)
+		return (0x00bbFFFF);
+	else
+		return (0x00FFFFFF);
+}
+
 void	ft_draw_fractal(t_graph *graph)
 {
-	int	h;
-	int	w;
-	int	i;
+	static int	(*fn)(int, int, t_graph*, float*);
+	int			h;
+	int			w;
+	int			i;
 
+	if (graph->fn_id == 0)
+		fn = &ft_mandelbrot;
+	else if (graph->fn_id == 1)
+		fn = &ft_julia;
 	w = 0;
 	while (w < IMG_WIDTH)
 	{
 		h = 0;
 		while (h < IMG_HEIGHT)
 		{
-			i = ft_mandelbrot(w, h, graph);
-			if (i == MAX_ITER)
-				mlx_put_pixel((*graph).img, w, h, 0x000000FF);
-			else if (i > MAX_ITER / 2)
-				mlx_put_pixel((*graph).img, w, h, 0x0000FFFF);
-			else if (i > MAX_ITER / 4)
-				mlx_put_pixel((*graph).img, w, h, 0x007dFFFF);
-			else if (i > MAX_ITER / 10)
-				mlx_put_pixel((*graph).img, w, h, 0x00bbFFFF);
-			else
-				mlx_put_pixel((*graph).img, w, h, 0x00FFFFFF);
+			i = fn(w, h, graph, graph->fn_param);
+			mlx_put_pixel(graph->img, w, h, ft_iter_to_color(i));
 			h++;
 		}
 		w++;

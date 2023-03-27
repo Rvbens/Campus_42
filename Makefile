@@ -7,8 +7,8 @@ OBJ = $(SRC:.c=.o)
 CFLAGS  +=-Werror -Wextra -Wall
 LIBFT	:= ./lib/libft
 LIBMLX	:= ./lib/MLX42
-HEADERS	:= -I $(LIBMLX)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libfj.a -lglfw -lm -L"/Users/rchaves-/.brew/opt/glfw/lib/"
+HEADERS	:= -I $(LIBMLX)/include -I $(LIBFT)
+LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -lglfw -lm -L"/Users/rchaves-/.brew/opt/glfw/lib/"
 
 
 
@@ -39,6 +39,10 @@ re: fclean all
 n:
 	norminette -RCheckForbiddenSourceHeader
 
-test:
-	make
-	./fractol julia
+test1:
+	@make
+	./fractol mandelbrot
+
+test2:
+	@make
+	./fractol julia 0.292 0.496
