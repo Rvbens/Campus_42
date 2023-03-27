@@ -1,5 +1,5 @@
 NAME = fractol
-SRC = main.c fractal.c parse.c
+SRC = main.c fractal.c parse.c hooks.c
 OBJ = $(SRC:.c=.o)
 #BNS_SRC = 
 #OBJ_SRC = $(BNS_SRC:.c=.o)

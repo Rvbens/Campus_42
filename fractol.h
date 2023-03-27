@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:46:59 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/27 17:32:31 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/03/27 20:07:13 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ int		ft_mandelbrot(int w, int h, t_graph *grf, float n[2]);
 void	ft_pxl_to_coords(int w, int h, t_graph *grf, float c[2]);
 
 void	ft_draw_fractal(t_graph *graph);
+
+void	ft_my_keyhook(mlx_key_data_t kdt, void *param);
+
+void	ft_my_scrollhook(double xdelta, double ydelta, void *param);
 
 #endif
