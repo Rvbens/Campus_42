@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 20:17:53 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/27 20:07:50 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/03/31 19:35:06 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_set_default_graph(t_graph *graph)
 	graph->scl = 2.;
 	graph->fn_param[0] = 0.;
 	graph->fn_param[1] = 0.;
+	graph->lst_min = 0;
 }
 
 int32_t	main(int argn, char **argv)
@@ -40,7 +41,7 @@ int32_t	main(int argn, char **argv)
 	ft_set_default_graph(&graph);
 	if (ft_parse_input(argn, argv, &graph))
 		return (EXIT_FAILURE);
-	mlx = mlx_init(IMG_WIDTH, IMG_HEIGHT, "fractol by rchaves-", true);
+	mlx = mlx_init(IMG_WIDTH, IMG_HEIGHT, "Fractol by rchaves-", true);
 	if (!mlx)
 		ft_error();
 	img = mlx_new_image(mlx, IMG_WIDTH, IMG_HEIGHT);

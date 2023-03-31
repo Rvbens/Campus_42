@@ -1,5 +1,5 @@
 NAME = fractol
-SRC = main.c fractal.c parse.c hooks.c
+SRC = main.c fractal.c parse.c hooks.c draw.c
 OBJ = $(SRC:.c=.o)
 #BNS_SRC = 
 #OBJ_SRC = $(BNS_SRC:.c=.o)
@@ -45,4 +45,4 @@ test1:
 
 test2:
 	@make
-	./fractol julia 0.292 0.496
+	./fractol julia -0.1755 0.69734

@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:02:44 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/27 20:10:25 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/03/27 20:26:28 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_more_kh(mlx_key_data_t kdt, t_graph *grf)
 {
 	if (kdt.key == MLX_KEY_ESCAPE && kdt.action == MLX_PRESS)
 	{
-		exit(1);
+		exit(0);
 	}
 	else if (kdt.key == MLX_KEY_Z && kdt.action == MLX_PRESS)
 	{
