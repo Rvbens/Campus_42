@@ -1,24 +1,22 @@
-NAME = client server
+NAME = minitalk
 SRC = client.c server.c
 OBJ = $(SRC:.c=.o)
-#BNS_SRC = 
-#BNS_OBJ = $(BNS_SRC:.c=.o)
 CFLAGS +=-Werror -Wextra -Wall
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+$(NAME):
+	gcc client.c -o client $(CFLAGS)
+	gcc server.c -o server $(CFLAGS)
 
 clean:
-	rm -f $(OBJ) $(BNS_OBJ)
+	rm -f client server
 
 fclean: clean
-	rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(BNS_OBJ)
-	ar rc $(NAME) $(BNS_OBJ)
+#bonus: $(BNS_OBJ)
+#	ar rc $(NAME) $(BNS_OBJ)
 
 .PHONY: all clean fclean re
