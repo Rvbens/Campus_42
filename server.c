@@ -29,10 +29,24 @@ void	ft_itoa(int n)
 
 void	sigusr_handler(int signal)
 {
+	static int	i;
+	static char	c;
+	
+	if (!i)
+	{
+		i = 0;
+		c = 0;
+	}
 	if (signal == SIGUSR1)
-		write(1, "\nSeñal recibida\n", 17);
-	if (signal == SIGUSR2)
-		write(1, "\nSeñal recibida\n", 17);
+		c |= 0x01;
+	i++;
+	if (i == 8)
+	{
+		write(1, &c, 1);
+		i = 0;
+	}
+	else
+		c <<= 1;
 }
 
 void set_sigactions(void)
@@ -48,8 +62,9 @@ void set_sigactions(void)
 int	main(void)
 {
 	ft_itoa(getpid());
+	write(1, &"\n", 1);
 	set_sigactions();
 	while(1)
-		continue ;
+		pause();
 	return (0);
 }
