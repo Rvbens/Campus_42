@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:50:12 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/12/18 12:19:21 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:04:12 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,19 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+typedef unsigned long	t_ulong;
+
+typedef unsigned int	t_uint;
+
+void	ft_putchr(char c, int *cnt);
+
+void	ft_putstr(char *str, int *cnt);
+
+void	ft_recursion(long nbr, int base_n, char *base, int *cnt);
+
+void	ft_putnbr(t_ulong nbr, int mode, int *cnt);
+
+int		ft_printf(char const *s, ...);
 
 #endif
