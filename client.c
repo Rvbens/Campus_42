@@ -58,6 +58,6 @@ int	main(int argn, char **argv)
 	if (argn == 3)
 		ft_atob(ft_atoi(argv[1]), argv[2]);
 	else
-		write(1, &"Incorrect arguments\n", 21);
+		write(1, &"Incorrect arguments: ./client PID message\n", 43);
 	return (0);
 }
