@@ -1,12 +1,16 @@
 NAME = minitalk
-SRC = client.c server.c
-OBJ = $(SRC:.c=.o)
 CFLAGS +=-Werror -Wextra -Wall
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): 
+	@make cl
+	@make sv
+
+cl: client.c
 	gcc client.c -o client $(CFLAGS)
+	
+sv:	server.c
 	gcc server.c -o server $(CFLAGS)
 
 clean:
@@ -22,4 +26,4 @@ re: fclean all
 n:
 	norminette -RCheckForbiddenSourceHeader
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re client server
