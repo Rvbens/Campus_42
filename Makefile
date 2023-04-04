@@ -19,4 +19,7 @@ re: fclean all
 #bonus: $(BNS_OBJ)
 #	ar rc $(NAME) $(BNS_OBJ)
 
+n:
+	norminette -RCheckForbiddenSourceHeader
+
 .PHONY: all clean fclean re
