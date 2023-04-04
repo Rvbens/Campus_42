@@ -14,21 +14,6 @@
 #include <unistd.h>
 #include "libft.h"
 
-void	ft_itoaw(int n)
-{
-	char	d;
-
-	if (n < 0)
-	{
-		write(1, &"-", 1);
-		n *= -1;
-	}
-	if (n > 9)
-		ft_itoaw(n / 10);
-	d = n % 10 + '0';
-	write(1, &d, 1);
-}
-
 void	sigusr_handler(int signal)
 {
 	static int	i;
@@ -63,8 +48,7 @@ void	ft_set_sigactions(void)
 
 int	main(void)
 {
-	ft_itoaw(getpid());
-	write(1, &"\n", 1);
+	ft_printf("%d\n", getpid());
 	ft_set_sigactions();
 	while (1)
 		pause();

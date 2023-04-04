@@ -30,4 +30,4 @@ re: fclean all
 n:
 	norminette -RCheckForbiddenSourceHeader
 
-.PHONY: all clean fclean re $(NAME)
+.PHONY: all clean fclean re $(NAME) libft
