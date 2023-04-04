@@ -12,18 +12,9 @@
 
 #include <signal.h>
 #include <unistd.h>
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, int len)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *) b;
-	while (len--)
-		*ptr++ = (unsigned char) c;
-	return (b);
-}
-
-void	ft_itoa(int n)
+void	ft_itoaw(int n)
 {
 	char	d;
 
@@ -33,7 +24,7 @@ void	ft_itoa(int n)
 		n *= -1;
 	}
 	if (n > 9)
-		ft_itoa(n / 10);
+		ft_itoaw(n / 10);
 	d = n % 10 + '0';
 	write(1, &d, 1);
 }
@@ -72,7 +63,7 @@ void	ft_set_sigactions(void)
 
 int	main(void)
 {
-	ft_itoa(getpid());
+	ft_itoaw(getpid());
 	write(1, &"\n", 1);
 	ft_set_sigactions();
 	while (1)

@@ -12,22 +12,7 @@
 
 #include <signal.h>
 #include <unistd.h>
-
-int	ft_atoi(const char *str)
-{
-	int	sig;
-	int	out;
-
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	sig = 1;
-	if (*str == '-' || *str == '+')
-		sig -= 2 * (*str++ == '-');
-	out = 0;
-	while (*str >= '0' && *str <= '9')
-		out = out * 10 + (*str++ - '0');
-	return (sig * out);
-}
+#include "libft.h"
 
 void	ft_atob(int pid, char *str)
 {
