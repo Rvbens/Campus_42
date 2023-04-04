@@ -50,7 +50,6 @@ void	ft_atob(int pid, char *str)
 		}
 		str++;
 	}
-	pid += 1;
 }
 
 int	main(int argn, char **argv)
