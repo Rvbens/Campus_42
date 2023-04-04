@@ -46,7 +46,7 @@ void	ft_atob(int pid, char *str)
 				kill(pid, SIGUSR2);
 			bt++;
 			c <<= 1;
-			usleep(1000);
+			usleep(100);
 		}
 		str++;
 	}
