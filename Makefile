@@ -8,7 +8,7 @@ CFLAGS  +=-Werror -Wextra -Wall
 LIBFT	:= ./lib/libft
 LIBMLX	:= ./lib/MLX42
 HEADERS	:= -I $(LIBMLX)/include -I $(LIBFT)
-LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -lglfw -lm -L"/Users/rchaves-/.brew/opt/glfw/lib/"
+LIBS	:= $(LIBMLX)/libmlx42.a $(LIBFT)/libft.a -lglfw -lm -L"/Users/rchaves-/.brew/opt/glfw/lib/"
 
 
 
@@ -19,6 +19,7 @@ all:  $(NAME)
 	
 $(NAME): $(OBJ)
 	make -C $(LIBFT)
+	make -C $(LIBMLX)
 	$(CC) -o $(NAME) $(OBJ) $(LIBS) $(HEADERS) 
 
 clean:
