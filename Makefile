@@ -46,3 +46,7 @@ test1:
 test2:
 	@make
 	./fractol julia -0.1755 0.69734
+
+test3:
+	@make
+	./fractol batman

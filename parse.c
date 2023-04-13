@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 19:43:47 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/27 19:48:41 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:38:12 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ int	ft_parse_input(int argn, char **argv, t_graph	*graph)
 {
 	if (argn == 1)
 	{
-		write(1, "No fractal selected from: mandelbrot, julia.\n", 46);
+		write(1, "No fractal selected from: mandelbrot, \
+		julia, batman.\n", 46);
 		return (1);
 	}
 	else if (ft_strncmp(argv[1], "mandelbrot", 12) == 0 && argn == 2)
 		graph->fn_id = 0;
+	else if (ft_strncmp(argv[1], "batman", 12) == 0 && argn == 2)
+		graph->fn_id = 2;
 	else if (ft_strncmp(argv[1], "julia", 12) == 0)
-	{
 		return (ft_parse_julia(argn, argv, graph));
-	}
 	else
 	{
 		write(1, "Invalid number of arguments.\n", 30);
