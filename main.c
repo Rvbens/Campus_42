@@ -6,12 +6,12 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 20:17:53 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/13 16:45:07 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:49:46 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "unistd.h"
+#include <unistd.h>
 #include "fractol.h"
 
 // Exit the program as failure.
@@ -28,7 +28,8 @@ void	ft_set_default_graph(t_graph *graph)
 	graph->scl = 2.;
 	graph->fn_param[0] = 0.;
 	graph->fn_param[1] = 0.;
-	graph->lst_min = 0;
+	graph->nxt_min = 0;
+	graph->nxt_max = MAX_ITER;
 }
 
 int32_t	main(int argn, char **argv)

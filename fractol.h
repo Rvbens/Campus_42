@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:46:59 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/13 16:35:13 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:24:33 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ typedef struct s_graph {
 	int			fn_id;
 	float		fn_param[2];
 	int			lst_min;
+	int			nxt_min;
+	int			lst_max;
+	int			nxt_max;
 }	t_graph;
 
 typedef int	(*t_frac_fn)(int, int, t_graph*, float*);
