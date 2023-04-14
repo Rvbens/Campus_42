@@ -6,11 +6,10 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:56:16 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/13 14:37:09 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:14:01 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/MLX42.h"
 #include "fractol.h"
 #include <math.h>
 

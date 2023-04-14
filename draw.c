@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 18:53:26 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/31 20:20:52 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:51:27 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,46 @@ int	ft_iter_to_grad(int i, int min)
 	}
 }
 
-void	ft_draw_fractal(t_graph *grf)
+//reverse endianess
+void	ft_reverse_pxl(char *pxl, int clr)
 {
-	t_frac_fn	fn;
-	int			nxt_min;
+	*(pxl++) = (char)(clr >> 24);
+	*(pxl++) = (char)(clr >> 16);
+	*(pxl++) = (char)(clr >> 8);
+	*(pxl++) = (char)(clr & 0xFF);
+}
+
+typedef struct s_iter {
 	int			h;
 	int			w;
 	int			i;
+}	t_iter;
+
+void	ft_draw_fractal(t_graph *grf)
+{
+	t_frac_fn	fn;
+	t_iter		iter;
+	int			nxt_min;
+	int			*pxls;
+	char		*pxl;
 
 	fn = ft_id_to_fn(grf);
-	w = 0;
+	iter.w = 0;
+	pxls = (int *) grf->img->pixels;
 	nxt_min = MAX_ITER;
-	while (w < IMG_WIDTH)
+	while (iter.w < IMG_WIDTH)
 	{
-		h = 0;
-		while (h < IMG_HEIGHT)
+		iter.h = 0;
+		while (iter.h < IMG_HEIGHT)
 		{
-			i = fn(w, h, grf, grf->fn_param);
-			if (i < nxt_min)
-				nxt_min = i;
-			mlx_put_pixel(grf->img, w, h++, ft_iter_to_grad(i, grf->lst_min));
+			iter.i = fn(iter.w, iter.h, grf, grf->fn_param);
+			if (iter.i < nxt_min)
+				nxt_min = iter.i;
+				pxl = (char *) &pxls[iter.h * IMG_WIDTH + iter.w];
+			ft_reverse_pxl(pxl, ft_iter_to_grad(iter.i, grf->lst_min));
+			iter.h++;
 		}
-		w++;
+		iter.w++;
 	}
 	grf->lst_min = nxt_min;
 }

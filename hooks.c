@@ -6,12 +6,11 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:02:44 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/27 20:26:28 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:14:32 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "MLX42/MLX42.h"
 #include "fractol.h"
 
 void	ft_move_kh(mlx_key_data_t kdt, t_graph *grf)

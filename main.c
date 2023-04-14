@@ -6,13 +6,12 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 20:17:53 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/31 19:35:06 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:45:07 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "unistd.h"
-#include "MLX42/MLX42.h"
 #include "fractol.h"
 
 // Exit the program as failure.

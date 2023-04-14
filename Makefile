@@ -18,8 +18,8 @@ all:  $(NAME)
 	$(CC) -o $@ -c $< $(HEADERS) $(CFLAGS)
 	
 $(NAME): $(OBJ)
-	make -C $(LIBFT)
-	make -C $(LIBMLX)
+	@make -C $(LIBFT)
+	@make -C $(LIBMLX)
 	$(CC) -o $(NAME) $(OBJ) $(LIBS) $(HEADERS) 
 
 clean:
@@ -38,7 +38,7 @@ re: fclean all
 .PHONY: all clean fclean re
 
 n:
-	norminette -RCheckForbiddenSourceHeader
+	norminette -RCheckForbiddenSourceHeader -d *.c
 
 test1:
 	@make

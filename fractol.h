@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:46:59 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/03/31 20:20:03 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:35:13 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define IMG_HEIGHT 512
 # define MAX_ITER 128
 # include "MLX42/MLX42.h"
+# include "libft.h"
 
 typedef struct s_graph {
 	mlx_image_t	*img;
