@@ -1,8 +1,10 @@
 NAME = fractol
 SRC = main.c fractal.c parse.c hooks.c draw.c
 OBJ = $(SRC:.c=.o)
-#BNS_SRC = 
-#OBJ_SRC = $(BNS_SRC:.c=.o)
+BNS_DIR = ./bonus/
+BNS_LST = main_bonus.c fractal_bonus.c parse_bonus.c hooks_bonus.c draw_bonus.c
+BNS_SRC = $(addprefix $(BNS_DIR), $(BNS_LST))
+BNS_OBJ = $(BNS_SRC:.c=.o)
 
 CFLAGS  +=-Werror -Wextra -Wall
 LIBFT	:= ./lib/libft
@@ -24,7 +26,7 @@ $(NAME): $(OBJ)
 
 clean:
 	make clean -C $(LIBFT)
-	rm -f $(OBJ) $(OBJ_SRC)
+	rm -f $(OBJ) $(BNS_OBJ)
 
 fclean: clean
 	make fclean -C $(LIBFT)
@@ -32,8 +34,10 @@ fclean: clean
 
 re: fclean all
 
-#bonus: $(OBJ_SRC)
-#	ar rc $(NAME) $(OBJ_SRC)
+bonus: $(BNS_OBJ)
+	@make -C $(LIBFT)
+	@make -C $(LIBMLX)
+	$(CC) -o $(NAME) $(BNS_OBJ) $(LIBS) $(HEADERS) 
 
 .PHONY: all clean fclean re
 
