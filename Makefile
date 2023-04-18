@@ -34,7 +34,16 @@ n:
 
 t:
 	@make
-	@./push_swap
+	@make t0
 
-test1:
-	./push_swap 
+t0:
+	./push_swap 1 2 3 -1 6 8
+
+t1:
+	# Wrong character error
+	./push_swap 1 2 a
+
+t2:
+	#Duplicates error
+	./push_swap 1 2 6 2
+

@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/18 18:37:46 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:21:22 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	ft_check_num(int len, char **argv)
 	i = 0;
 	while (i < len)
 	{
-		str = argv[++i];
+		str = argv[i++];
 		while (*str)
 		{
-			if (*str < '0' || *str > '9')
+			if ((*str < '0' || *str > '9') && *str != '-')
 				return (1);
 			str++;
 		}
@@ -46,7 +46,7 @@ int	*ft_check_long(int len, char **argv)
 	int		i;
 
 	i = 0;
-	arr = malloc(len);
+	arr = malloc(len * sizeof(int));
 	while (i < len)
 	{
 		n = ft_atoi(argv[i]);
@@ -55,7 +55,8 @@ int	*ft_check_long(int len, char **argv)
 			free(arr);
 			return (0);
 		}
-		arr[i++] = n;
+		arr[i++] = (int) n;
+		//ft_printf("save: %d\n", arr[i-1]);
 	}
 	return (arr);
 }
@@ -86,6 +87,7 @@ t_list	*ft_check_input(int len, char **argv)
 {
 	t_list	*start;
 	t_list	*node;
+	int		*cnt;
 	int		*arr;
 	int		i;
 
@@ -100,10 +102,17 @@ t_list	*ft_check_input(int len, char **argv)
 		ft_error();
 	}
 	i = 0;
-	start = ft_lstnew(&arr[i++]);
+	cnt = malloc(sizeof(int));
+	*cnt = arr[i];
+	start = ft_lstnew(cnt);
 	node = start;
-	while (i < len)
-		node->next = ft_lstnew(&arr[i++]);
+	while (++i < len)
+	{
+		cnt = malloc(sizeof(int));
+		*cnt = arr[i];
+		node->next = ft_lstnew(cnt);
+		node = node->next;
+	}
 	free(arr);
 	return (start);
 }

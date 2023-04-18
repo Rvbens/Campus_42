@@ -6,11 +6,12 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/18 18:18:12 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:23:08 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_n_bits(t_list *stk)
 {
@@ -22,7 +23,8 @@ int	ft_n_bits(t_list *stk)
 	b_max = 0;
 	while (stk)
 	{
-		num = (int) stk->content;
+		num = *((int *) stk->content);
+		printf("%d\n", num); //borrar
 		b = 1;
 		b_n = 0;
 		while (b_n < 31)
@@ -37,7 +39,7 @@ int	ft_n_bits(t_list *stk)
 	return (b_max + 1);
 }
 
-void	ft_leaks(void) //borrar
+void	ft_leaks(void)
 {
 	system("leaks -q push_swap");
 }
@@ -45,14 +47,24 @@ void	ft_leaks(void) //borrar
 int	main(int argn, char **argv)
 {
 	t_list	*stk_a;
-	int		n_bits;
+	//int		n_bits = 0 ;
 
-	atexit(ft_leaks); //borrar
+	atexit(ft_leaks);
+	//stk_a = malloc(sizeof(t_list));
 	if (argn == 1)
 		return (0);
 	argn--;
+	argv++;
 	stk_a = ft_check_input(argn, argv);
-	n_bits = ft_n_bits(stk_a);
-	ft_solver(stk_a, argn, n_bits);
+	//n_bits = ft_n_bits(stk_a);
+	//ft_solver(stk_a, argn, n_bits);
+	/*t_list	*node;
+	node = stk_a;
+	while (node)
+	{
+		ft_printf("Node: %d\n", *((int *) node->content));
+		node = node->next;
+	}*/
+	ft_lstclear(&stk_a, &free);
 	return (0);
 }
