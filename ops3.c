@@ -6,11 +6,11 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:16:15 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/17 18:32:25 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:35:25 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	ft_rra(int *stk_a)
 {

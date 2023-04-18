@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = main.c ops1.c ops2.c ops3.c
+SRC = main.c ops1.c ops2.c ops3.c solver.c parse.c
 OBJ = $(SRC:.c=.o)
 
 CFLAGS  +=-Werror -Wextra -Wall
@@ -14,6 +14,7 @@ all:  $(NAME)
 	
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
+	@make bonus -C $(LIBFT)
 	$(CC) -o $(NAME) $(OBJ) $(LIBS) $(HEADERS) 
 
 clean:
@@ -30,3 +31,10 @@ re: fclean all
 
 n:
 	norminette -RCheckForbiddenSourceHeader -d *.c
+
+t:
+	@make
+	@./push_swap
+
+test1:
+	./push_swap 

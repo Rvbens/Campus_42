@@ -1,45 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops1.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 18:16:15 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/17 19:35:21 by rchaves-         ###   ########.fr       */
+/*   Created: 2023/04/17 19:26:43 by rchaves-          #+#    #+#             */
+/*   Updated: 2023/04/18 18:13:36 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "libft.h"
+# include <stdlib.h>
 
-void	ft_sa(int *stk_a)
-{
-	(void) stk_a;
-	ft_printf("sa\n");
-}
+t_list	*ft_check_input(int len, char **argv);
 
-void	ft_sb(int *stk_b)
-{
-	(void) stk_b;
-	ft_printf("sb\n");
-}
+void	ft_solver(t_list *stk_a, int n, int n_bits);
 
-void	ft_ss(int *stk_a, int *stk_b)
-{
-	ft_sa(stk_a);
-	ft_sb(stk_b);
-}
-
-void	ft_pa(int *stk_a, int *stk_b)
-{
-	(void) stk_a;
-	(void) stk_b;
-	ft_printf("pa\n");
-}
-
-void	ft_pb(int *stk_a, int *stk_b)
-{
-	(void) stk_a;
-	(void) stk_b;
-	ft_printf("pb\n");
-}
+#endif

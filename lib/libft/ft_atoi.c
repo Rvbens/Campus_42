@@ -6,14 +6,14 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:04:44 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/12/01 09:22:00 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:18:17 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	sig;
-	int	out;
+	long	sig;
+	long	out;
 
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
