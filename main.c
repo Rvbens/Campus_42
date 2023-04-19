@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/19 19:46:05 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:34:13 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,20 @@ t_list	*ft_arr_2_lst(int len, int *arr)
 
 // count the number of bits to represent
 // the biggest number
-int	ft_n_bits(t_list *stk)
+int	ft_max(t_list *stk)
 {
-	int	b_max;
-	int	b_n;
+	int	max;
 	int	num;
-	int	b;
 
-	b_max = 0;
+	max = 0;
 	while (stk)
 	{
 		num = *((int *) stk->content);
-		b = 1;
-		b_n = 0;
-		while (b_n < 31)
-		{
-			if (num & b && b_n > b_max)
-			{	
-				b_max = b_n;
-			}
-			b <<= 1;
-			b_n++;
-		}
+		if (num > max)
+			max = num;
 		stk = stk->next;
 	}
-	return (b_max + 1);
+	return (max);
 }
 
 void	ft_leaks(void)
@@ -71,10 +60,19 @@ void	ft_leaks(void)
 	system("leaks -q push_swap");
 }
 
+void	ft_printf_lst(t_list *node)
+{
+	while (node)
+	{
+		ft_printf("Node: %d\n", *((int *) node->content));
+		node = node->next;
+	}
+}
+
 int	main(int argn, char **argv)
 {
 	t_list	*stk_a;
-	int		n_bits;
+	int		max;
 
 	atexit(ft_leaks);
 	if (argn == 1)
@@ -82,16 +80,10 @@ int	main(int argn, char **argv)
 	argn--;
 	argv++;
 	stk_a = ft_arr_2_lst(argn, ft_check_input(argn, argv));
-	n_bits = ft_n_bits(stk_a);
-	ft_printf("N bits: %d\n", n_bits);
-	//ft_solver(stk_a, argn, n_bits);
-	t_list	*node;
-	node = stk_a;
-	while (node)
-	{
-		ft_printf("Node: %d\n", *((int *) node->content));
-		node = node->next;
-	}
+	max = ft_max(stk_a);
+	//ft_solver(stk_a, argn, max);
+	ft_sa(&stk_a);
+	ft_printf_lst(stk_a);
 	ft_lstclear(&stk_a, &free);
 	return (0);
 }
