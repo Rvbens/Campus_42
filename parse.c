@@ -6,15 +6,17 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/18 21:21:22 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:44:28 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(void)
+void	ft_error(int *arr)
 {
 	ft_printf("Error\n");
+	if (arr)
+		free(arr);
 	exit(EXIT_FAILURE);
 }
 
@@ -56,63 +58,52 @@ int	*ft_check_long(int len, char **argv)
 			return (0);
 		}
 		arr[i++] = (int) n;
-		//ft_printf("save: %d\n", arr[i-1]);
 	}
 	return (arr);
 }
 
+// check for dups and return the arr with the
+// numbers transformed to theirs ranks
 int	ft_check_dups(int len, int *arr)
 {
 	int	i;
 	int	j;
+	int	r;
 
 	i = 0;
 	while (i < len)
 	{
-		j = i + 1;
-		while (j < len)
+		j = -1;
+		r = 0;
+		while (++j < len)
 		{
-			if (arr[i] == arr[j++])
+			if (i == j)
+				continue ;
+			if (arr[i] == arr[j])
 				return (1);
+			else if (arr[i] > arr[j])
+				r++;
 		}
+		arr[i] = r;
 		i++;
 	}
 	return (0);
 }
 
-// arg not int, arg > int, check duplicates
-// return a pointer to the list or NULL
-// if there is an error
-t_list	*ft_check_input(int len, char **argv)
+// Test: arg not int, arg > int, check duplicates
+// return a pointer array or exit
+// if there is an error. The array number are
+// always positive and on increments of 1.
+int	*ft_check_input(int len, char **argv)
 {
-	t_list	*start;
-	t_list	*node;
-	int		*cnt;
 	int		*arr;
-	int		i;
 
 	if (ft_check_num(len, argv))
-		ft_error();
+		ft_error(0);
 	arr = ft_check_long(len, argv);
 	if (!arr)
-		ft_error();
+		ft_error(0);
 	if (ft_check_dups(len, arr))
-	{
-		free(arr);
-		ft_error();
-	}
-	i = 0;
-	cnt = malloc(sizeof(int));
-	*cnt = arr[i];
-	start = ft_lstnew(cnt);
-	node = start;
-	while (++i < len)
-	{
-		cnt = malloc(sizeof(int));
-		*cnt = arr[i];
-		node->next = ft_lstnew(cnt);
-		node = node->next;
-	}
-	free(arr);
-	return (start);
+		ft_error(arr);
+	return (arr);
 }
