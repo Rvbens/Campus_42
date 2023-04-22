@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:16:15 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/19 21:32:03 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:01:35 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void	ft_ss(t_list **stk_a, t_list **stk_b)
 
 void	ft_pa(t_list **stk_a, t_list **stk_b)
 {
-	(void) stk_a;
-	(void) stk_b;
+	t_list	*node;
+
+	node = *stk_b;
+	*stk_b = node->next;
+	ft_lstadd_front(stk_a, node);
 	ft_printf("pa\n");
 }
 
