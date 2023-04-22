@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:16:15 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/19 21:35:34 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/22 19:12:47 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_ra(t_list **stk_a)
 {
-	(void) stk_a;
+	t_list	*last;
+
+	last = *stk_a;
+	*stk_a = last->next;
+	last->next = 0;
+	ft_lstadd_back(stk_a, last);
 	ft_printf("ra\n");
 }
 

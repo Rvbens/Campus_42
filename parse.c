@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/19 19:44:28 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:44:10 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,14 @@ int	ft_check_dups(int len, int *arr)
 {
 	int	i;
 	int	j;
-	int	r;
+	int	*r;
 
-	i = 0;
-	while (i < len)
+	i = -1;
+	r = malloc(len);
+	ft_bzero(r, len);
+	while (++i < len)
 	{
 		j = -1;
-		r = 0;
 		while (++j < len)
 		{
 			if (i == j)
@@ -82,11 +83,12 @@ int	ft_check_dups(int len, int *arr)
 			if (arr[i] == arr[j])
 				return (1);
 			else if (arr[i] > arr[j])
-				r++;
+				r[i]++;
 		}
-		arr[i] = r;
-		i++;
 	}
+	while (i--)
+		arr[i] = r[i];
+	free(r);
 	return (0);
 }
 

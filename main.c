@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/19 21:34:13 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/04/22 23:29:30 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	ft_printf_lst(t_list *node)
 	while (node)
 	{
 		ft_printf("Node: %d\n", *((int *) node->content));
+		// ft_printf("Node dir : %d\n", node);
+		// ft_printf("Node next : %d\n", node->next);
 		node = node->next;
 	}
 }
@@ -74,15 +76,14 @@ int	main(int argn, char **argv)
 	t_list	*stk_a;
 	int		max;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	if (argn == 1)
 		return (0);
 	argn--;
 	argv++;
 	stk_a = ft_arr_2_lst(argn, ft_check_input(argn, argv));
 	max = ft_max(stk_a);
-	//ft_solver(stk_a, argn, max);
-	ft_sa(&stk_a);
+	ft_solver(&stk_a, argn, max);
 	ft_printf_lst(stk_a);
 	ft_lstclear(&stk_a, &free);
 	return (0);
