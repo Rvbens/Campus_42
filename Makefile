@@ -32,18 +32,24 @@ re: fclean all
 n:
 	norminette -RCheckForbiddenSourceHeader -d *.c
 
-t:
-	@make
-	@make t0
+ch1:
+	./checkers/checker_OS
 
-t0:
-	./push_swap 1 2 3 -1 6 8
+t0: all
+	./push_swap 1 2 3 -1 6 8 9 0
 
-t1:
+t1: all
 	# Wrong character error
 	./push_swap 1 2 a
 
-t2:
+t2: all
 	#Duplicates error
 	./push_swap 1 2 6 2
+
+t3: all
+	./push_swap 1 2 0
+
+debug: all
+	gcc -g $(SRC) $(LIBS) $(HEADERS) 
+	lldb a.out 1 2 0
 
