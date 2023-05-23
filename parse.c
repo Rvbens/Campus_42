@@ -6,15 +6,16 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/04/22 21:44:10 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:20:44 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 void	ft_error(int *arr)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	if (arr)
 		free(arr);
 	exit(EXIT_FAILURE);
@@ -26,16 +27,21 @@ int	ft_check_num(int len, char **argv)
 {
 	char	*str;
 	int		i;
+	int		j;
 
 	i = 0;
 	while (i < len)
 	{
 		str = argv[i++];
+		j = 0;
 		while (*str)
 		{
-			if ((*str < '0' || *str > '9') && *str != '-')
+			if (*str == '-' && str[1] == 0)
+				return (1);
+			if ((*str < '0' || *str > '9') && !(j == 0 && *str == '-'))
 				return (1);
 			str++;
+			j++;
 		}
 	}
 	return (0);
