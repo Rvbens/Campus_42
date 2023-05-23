@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = main.c ops1.c ops2.c ops3.c solver.c parse.c
+SRC = main.c ops1.c ops2.c ops3.c solver.c solver_small.c parse.c 
 OBJ = $(SRC:.c=.o)
 
 CFLAGS  +=-Werror -Wextra -Wall
@@ -47,7 +47,7 @@ t2: all
 	./push_swap 1 2 6 2
 
 t3: all
-	./push_swap 1 2 0
+	./push_swap 2 3 1
 
 debug: all
 	gcc -g $(SRC) $(LIBS) $(HEADERS) 

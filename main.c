@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/22 15:30:01 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:09:01 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,6 @@ t_list	*ft_arr_2_lst(int len, int *arr)
 	return (start);
 }
 
-// count the number of bits to represent
-// the biggest number
-int	ft_max(t_list *stk)
-{
-	int	max;
-	int	num;
-
-	max = 0;
-	while (stk)
-	{
-		num = *((int *) stk->content);
-		if (num > max)
-			max = num;
-		stk = stk->next;
-	}
-	return (max);
-}
-
 void	ft_leaks(void)
 {
 	system("leaks -q push_swap");
@@ -74,12 +56,9 @@ void	ft_printf_lst(t_list *node)
 int	main(int argn, char **argv)
 {
 	t_list	*stk_a;
-	int		max;
 
 	//atexit(ft_leaks);
-	if (argn == 1)
-		return (0);
-	else if (argn == 2)
+	if (argn == 2)
 	{	
 		argv = ft_split(argv[1], 32);
 		argn = 0;
@@ -91,9 +70,10 @@ int	main(int argn, char **argv)
 		argn--;
 		argv++;
 	}
+	if (argn == 0)
+		ft_error(0);
 	stk_a = ft_arr_2_lst(argn, ft_check_input(argn, argv));
-	max = ft_max(stk_a);
-	ft_solver(&stk_a, argn, max);
+	ft_solver(&stk_a, argn);
 	//ft_printf_lst(stk_a);
 	ft_lstclear(&stk_a, &free);
 	return (0);
