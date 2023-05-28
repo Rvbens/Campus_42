@@ -28,7 +28,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re check
 
 n:
 	norminette -RCheckForbiddenSourceHeader -d ./src/*.c
@@ -37,3 +37,15 @@ debug: all
 	gcc -g $(SDIR) $(LIBS) $(HEADERS) 
 	lldb a.out 1 2 0
 
+git_check:
+	git clone https://github.com/gemartin99/Push_swap.git check
+
+check:
+	@make
+	@cp push_swap ./check/push_swap
+	cd check ; bash push_swap_test.sh
+
+viz:
+	@make
+	@cp push_swap ./check/push_swap
+	cd check ; python3 python_visualizer.py `ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`
