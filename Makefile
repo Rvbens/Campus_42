@@ -1,10 +1,11 @@
 NAME = push_swap
 SRC = main.c ops1.c ops2.c ops3.c solver.c solver_small.c parse.c 
-OBJ = $(SRC:.c=.o)
+SDIR = $(addprefix src/, $(SRC))
+OBJ = $(SDIR:.c=.o)
 
 CFLAGS  +=-Werror -Wextra -Wall
 LIBFT	:= ./lib/libft
-HEADERS	:= -I $(LIBMLX)/include -I $(LIBFT)
+HEADERS	:= -I $(LIBFT)
 LIBS	:= $(LIBFT)/libft.a
 
 all:  $(NAME)
