@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:38:24 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/23 17:08:45 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:49:37 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	ft_solver_small(t_list **stk_a, int n)
 {
 	t_list	**stk_b;
 
+	if (n == 1)
+		return ;
 	stk_b = malloc(sizeof(t_list **));
 	if (n <= 3)
 		ft_solver_3(stk_a);
