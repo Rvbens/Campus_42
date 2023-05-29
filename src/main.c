@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/28 15:07:14 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:49:51 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argn, char **argv)
 		argv++;
 	}
 	if (argn == 0)
-		ft_error(0);
+		return (0);
 	stk_a = ft_arr_2_lst(argn, ft_check_input(argn, argv));
 	ft_solver(&stk_a, argn);
 	ft_lstclear(&stk_a, &free);
