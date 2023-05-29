@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/23 12:20:44 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:29:35 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_check_dups(int len, int *arr)
 			if (i == j)
 				continue ;
 			if (arr[i] == arr[j])
-				return (1);
+				return (free(r), 1);
 			else if (arr[i] > arr[j])
 				r[i]++;
 		}
