@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/28 11:34:56 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/28 15:07:14 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,6 @@ t_list	*ft_arr_2_lst(int len, int *arr)
 	return (start);
 }
 
-void	ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}
-
 void	ft_printf_lst(t_list *node)
 {
 	while (node)
@@ -49,6 +44,11 @@ void	ft_printf_lst(t_list *node)
 		ft_printf("Node: %d\n", *((int *) node->content));
 		node = node->next;
 	}
+}
+
+void	ft_leaks(void)
+{
+	system("leaks -q push_swap");
 }
 
 //atexit(ft_leaks);
