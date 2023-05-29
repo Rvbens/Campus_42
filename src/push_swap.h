@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:26:43 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/23 14:48:16 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:51:42 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_rb(t_list **stk_b);
 void	ft_rr(t_list **stk_a, t_list **stk_b);
 
 void	ft_rra(t_list **stk_a);
+
+int		ft_is_sorted(t_list *stk_a, int inc);
 
 void	ft_solver(t_list **stk_a, int n);
 
