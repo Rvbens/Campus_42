@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/29 11:49:51 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:05:02 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ int	main(int argn, char **argv)
 	{	
 		argv = ft_split(argv[1], 32);
 		argn = 0;
+		ft_printf("OK\n");
+		ft_printf("%d\n", argv);
 		while (argv[argn])
 			argn++;
+
 	}
 	else
 	{

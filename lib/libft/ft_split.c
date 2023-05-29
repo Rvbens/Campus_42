@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:02 by rchaves-          #+#    #+#             */
-/*   Updated: 2022/12/17 19:29:21 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:12:24 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char	is_sow(char const *s, char c, char i)
 		return (*s != c && (s[-1] == c));
 }
 
-char	count_words(char const *s, char c)
+int	count_words(char const *s, char c)
 {
-	char	word_cnt;
+	int	word_cnt;
 
 	word_cnt = 0;
 	while (*s)
@@ -50,7 +50,7 @@ char	**free_all(char **out, int word_i)
 char	**ft_split(char const *s, char c)
 {
 	char	**out;
-	char	word_cnt;
+	int		word_cnt;
 	int		word_i;
 	int		str_i;
 	int		i;
