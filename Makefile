@@ -38,7 +38,7 @@ debug: all
 	lldb a.out 1 2 0
 
 git_check:
-	git clone https://github.com/gemartin99/Push_swap.git check
+	git clone https://github.com/gemartin99/Push-Swap-Tester.git check
 
 check: all
 	@make
