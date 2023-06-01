@@ -50,6 +50,10 @@ viz: all
 	@cp push_swap ./check/push_swap
 	cd check ; python3 python_visualizer.py `ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`
 
+t0: all
+	./push_swap
+	./push_swap ""
+
 t1: all
 	./push_swap 8 0 -9 -1 -4 4 -2 -7 5 -5 -10 6 7 2 1 3 -3 -6 9 -8 | wc -l
 
