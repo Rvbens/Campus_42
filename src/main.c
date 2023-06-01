@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/29 12:17:36 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:48:40 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,34 @@ void	ft_printf_lst(t_list *node)
 	}
 }
 
+void	ft_freeall(int quote_bool, int argn, char **argv, t_list *stk_a)
+{
+	if (quote_bool)
+	{	
+		while (argn--)
+			free(argv[argn]);
+		free(argv);
+	}
+	ft_lstclear(&stk_a, &free);
+}
+
 void	ft_leaks(void)
 {
 	system("leaks -q push_swap");
 }
-
 //atexit(ft_leaks);
+
 int	main(int argn, char **argv)
 {
 	t_list	*stk_a;
+	int		quote_bool;
 
-	if (argn == 2)
+	quote_bool = 0;
+	if (argn == 1)
+		return (0);
+	else if (argn == 2)
 	{	
+		quote_bool = 1;
 		argv = ft_split(argv[1], 32);
 		argn = 0;
 		while (argv[argn])
@@ -68,10 +84,8 @@ int	main(int argn, char **argv)
 		argn--;
 		argv++;
 	}
-	if (argn == 0)
-		return (0);
 	stk_a = ft_arr_2_lst(argn, ft_check_input(argn, argv));
 	ft_solver(&stk_a, argn);
-	ft_lstclear(&stk_a, &free);
+	ft_freeall(quote_bool, argn, argv, stk_a);
 	return (0);
 }
