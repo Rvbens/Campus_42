@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/06/01 17:48:40 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/06/01 21:19:04 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	ft_freeall(int quote_bool, int argn, char **argv, t_list *stk_a)
 	ft_lstclear(&stk_a, &free);
 }
 
-void	ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}
+// void	ft_leaks(void)
+// {
+// 	system("leaks -q push_swap");
+// }
 //atexit(ft_leaks);
 
 int	main(int argn, char **argv)
@@ -74,7 +74,7 @@ int	main(int argn, char **argv)
 	else if (argn == 2)
 	{	
 		quote_bool = 1;
-		argv = ft_split(argv[1], 32);
+		argv = ft_split(argv[1], ' ');
 		argn = 0;
 		while (argv[argn])
 			argn++;
