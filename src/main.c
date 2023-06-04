@@ -6,12 +6,11 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/06/01 21:19:04 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:36:32 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 // convert the number array to a list.
 t_list	*ft_arr_2_lst(int len, int *arr)

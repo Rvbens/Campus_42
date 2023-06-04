@@ -6,7 +6,7 @@
 /*   By: rchaves- <rchaves-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:17:05 by rchaves-          #+#    #+#             */
-/*   Updated: 2023/05/29 11:29:35 by rchaves-         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:39:51 by rchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	*ft_check_long(int len, char **argv)
 	while (i < len)
 	{
 		n = ft_atoi(argv[i]);
-		if (n > 2147483647 || n < -2147483648)
+		if (n > 2147483647 || n < -2147483648 || ft_strlen(argv[i]) > 10)
 		{
 			free(arr);
 			return (0);
